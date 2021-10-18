@@ -95,6 +95,9 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $movie = Movie::findOrFail($id);
+        $movie->delete();
+        
+        return redirect()->route('movies.index');
     }
 }

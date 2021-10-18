@@ -9,7 +9,13 @@
 <body>
     @foreach($movies as $movie)
         <a href="{{route('movies.show', $movie->id)}}"><h2>{{ $movie->title }}</h2></a>
+        <form method="POST" action="{{route('movies.destroy', $movie->id)}}">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Elimina</button>
+        </form>
     @endforeach
+    <br>
     <a href="{{route('movies.create')}}">Crea nuovo film</a>
 </body>
 </html>
